@@ -1,39 +1,233 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Easy Loan App - Apply Loan</title>
   <script src="{% static 'js/script.js' %}"></script>
-  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body class="min-h-screen bg-surface text-on-surface p-6 md:p-10">
-  <div class="max-w-4xl mx-auto">
-    <div class="flex items-center justify-between mb-8">
-      <div>
-        <p class="text-sm font-semibold text-secondary uppercase tracking-[0.2em]">Easy Loan App</p>
-        <h1 class="text-3xl font-headline font-extrabold text-primary mt-2">Loan Application</h1>
-      </div>
-      <a href="{% url 'dashboard' %}" class="text-primary font-semibold">Back to Dashboard</a>
+<body class="dashboard-body bg-surface text-on-surface">
+  <header class="dashboard-topbar">
+    <div class="dashboard-brand-row">
+      <span class="dashboard-logo">Easy Loan App</span>
+      <label class="dashboard-search">
+        <span class="material-symbols-outlined">search</span>
+        <input placeholder="Search accounts..." type="text">
+      </label>
     </div>
 
-    <div class="bg-surface-container-lowest rounded-xl shadow-xl p-8">
-      <form action="{% url 'dashboard' %}" method="get" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input name="loan_type" type="text" class="rounded-xl border-outline-variant bg-surface-container-low" placeholder="Loan type">
-        <input name="amount" type="text" class="rounded-xl border-outline-variant bg-surface-container-low" placeholder="Requested amount">
-        <input name="term" type="text" class="rounded-xl border-outline-variant bg-surface-container-low" placeholder="Repayment term">
-        <input name="purpose" type="text" class="rounded-xl border-outline-variant bg-surface-container-low" placeholder="Loan purpose">
-        <textarea name="notes" class="rounded-xl border-outline-variant bg-surface-container-low md:col-span-2 min-h-32" placeholder="Additional details"></textarea>
-        <button type="submit" class="md:col-span-2 rounded-xl bg-primary text-white py-3 font-semibold shadow-lg shadow-primary/20">
-          Submit Application
-        </button>
-      </form>
+    <div class="dashboard-top-actions">
+      <button class="dashboard-icon-btn" type="button" aria-label="Notifications">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <button class="dashboard-icon-btn" type="button" aria-label="Help">
+        <span class="material-symbols-outlined filled-icon">help</span>
+      </button>
+      <a class="dashboard-quick-apply" href="{% url 'apply_loan' %}">Quick Apply</a>
     </div>
+  </header>
+
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar">
+      <div class="dashboard-sidebar-head">
+        <h2>Architectural Ledger</h2>
+        <p>Premium Finance Portal</p>
+      </div>
+
+      <nav class="dashboard-nav">
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Dashboard Overview</span>
+        </a>
+        <a class="dashboard-nav-item active" href="{% url 'apply_loan' %}">
+          <span class="material-symbols-outlined">add_box</span>
+          <span>Apply Loan</span>
+        </a>
+        <a class="dashboard-nav-item" href="{% url 'my_loans' %}">
+          <span class="material-symbols-outlined">account_balance_wallet</span>
+          <span>My Loans</span>
+        </a>
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">payments</span>
+          <span>Payments</span>
+        </a>
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">calculate</span>
+          <span>Loan Calculator</span>
+        </a>
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">notifications</span>
+          <span>Notifications</span>
+        </a>
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">description</span>
+          <span>Documents</span>
+        </a>
+      </nav>
+
+      <div class="dashboard-nav dashboard-nav-secondary">
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">person</span>
+          <span>Profile</span>
+        </a>
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">settings</span>
+          <span>Settings</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <section class="application-page">
+        <div class="application-header">
+          <div>
+            <p class="application-kicker">Application Portal</p>
+            <h1>New Credit Facility</h1>
+          </div>
+          <div class="application-ref">
+            <span>Application ID</span>
+            <strong>ELA-1992-2204</strong>
+          </div>
+        </div>
+
+        <div class="application-layout">
+          <aside class="application-steps">
+            <div class="application-step active">
+              <span>1</span>
+              <div>
+                <strong>Loan Setup</strong>
+              </div>
+            </div>
+            <div class="application-step">
+              <span>2</span>
+              <div>
+                <strong>Personal</strong>
+              </div>
+            </div>
+            <div class="application-step">
+              <span>3</span>
+              <div>
+                <strong>Financials</strong>
+              </div>
+            </div>
+            <div class="application-step">
+              <span>4</span>
+              <div>
+                <strong>Verification</strong>
+              </div>
+            </div>
+          </aside>
+
+          <div class="application-content">
+            <form action="{% url 'dashboard' %}" method="get" class="application-form">
+              <section class="application-card">
+                <div class="application-section-head">
+                  <h2>Loan Parameters</h2>
+                  <p>Define the scope of your financial requirement.</p>
+                </div>
+
+                <div class="application-amount-panel">
+                  <label>
+                    <span>Requested Amount (PHP)</span>
+                    <div class="application-amount-input">
+                      <em>$</em>
+                      <input name="amount" type="text" value="25,000.00">
+                    </div>
+                  </label>
+
+                  <div class="application-grid two">
+                    <label>
+                      <span>Purpose of Loan</span>
+                      <select name="purpose">
+                        <option>Business Expansion</option>
+                        <option>Education</option>
+                        <option>Home Improvement</option>
+                      </select>
+                    </label>
+
+                    <label>
+                      <span>Repayment Term</span>
+                      <select name="term">
+                        <option>24 Months (2 Years)</option>
+                        <option>12 Months (1 Year)</option>
+                        <option>36 Months (3 Years)</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+              </section>
+
+              <section class="application-card">
+                <div class="application-section-head">
+                  <h2>Identity Verification</h2>
+                  <p>Please ensure your information matches your official documents.</p>
+                </div>
+
+                <div class="application-grid two">
+                  <label>
+                    <span>Full Legal Name</span>
+                    <input name="full_name" type="text" placeholder="e.g. Jonathan Aris">
+                  </label>
+                  <label>
+                    <span>Email Address</span>
+                    <input name="email" type="email" placeholder="jonathan@gmail.com">
+                  </label>
+                  <label>
+                    <span>Phone Number</span>
+                    <input name="phone" type="text" placeholder="Enter Your Phone Number">
+                  </label>
+                  <label>
+                    <span>Social Security Number (Last 4)</span>
+                    <input name="ssn" type="text" placeholder="••••">
+                  </label>
+                </div>
+              </section>
+
+              <section class="application-card">
+                <div class="application-section-head">
+                  <h2>Financial Portfolio</h2>
+                  <p>Upload proof of income and employment status.</p>
+                </div>
+
+                <div class="application-grid two">
+                  <label>
+                    <span>Employment Status</span>
+                    <select name="employment_status">
+                      <option>Full time Employee</option>
+                      <option>Self Employed</option>
+                      <option>Contractor</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Annual Gross Income</span>
+                    <input name="income" type="text" value="$120,000">
+                  </label>
+                </div>
+
+                <div class="application-upload">
+                  <span class="material-symbols-outlined">upload_file</span>
+                  <h3>Upload Supporting Documents</h3>
+                  <p>PDF or JPEG (Max 10MB). Proof of identity & income.</p>
+                  <button type="button">Browse Files</button>
+                </div>
+              </section>
+
+              <div class="application-actions">
+                <a href="{% url 'dashboard' %}" class="application-secondary-btn">Save Draft</a>
+                <button type="submit" class="application-primary-btn">Submit Application</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
 </body>
 </html>

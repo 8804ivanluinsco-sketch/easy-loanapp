@@ -13,251 +13,232 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body class="bg-surface text-on-surface">
-  <header class="sticky top-0 z-50 flex justify-between items-center px-8 w-full bg-white/80 backdrop-blur-xl h-16 border-b border-[#bec9c8]/15">
-    <div class="flex items-center gap-8">
-      <span class="text-xl font-bold text-[#005050] dark:text-teal-500 tracking-tight font-headline">Easy Loan App</span>
-      <div class="hidden md:flex items-center bg-surface-container-low px-4 py-1.5 rounded-xl gap-3">
-        <span class="material-symbols-outlined text-outline text-sm">search</span>
-        <input class="bg-transparent border-none focus:ring-0 text-sm w-64 placeholder:text-outline" placeholder="Search accounts..." type="text">
-      </div>
+<body class="dashboard-body bg-surface text-on-surface">
+  <header class="dashboard-topbar">
+    <div class="dashboard-brand-row">
+      <span class="dashboard-logo">Easy Loan App</span>
+      <label class="dashboard-search">
+        <span class="material-symbols-outlined">search</span>
+        <input placeholder="Search accounts..." type="text">
+      </label>
     </div>
-    <div class="flex items-center gap-4">
-      <button class="flex items-center gap-2 px-4 py-2 hover:bg-[#f1f4f3] transition-all duration-200 rounded-xl" type="button">
-        <span class="material-symbols-outlined text-primary">notifications</span>
+
+    <div class="dashboard-top-actions">
+      <button class="dashboard-icon-btn" type="button" aria-label="Notifications">
+        <span class="material-symbols-outlined">notifications</span>
       </button>
-      <button class="flex items-center gap-2 px-4 py-2 hover:bg-[#f1f4f3] transition-all duration-200 rounded-xl" type="button">
-        <span class="material-symbols-outlined text-primary">help_outline</span>
+      <button class="dashboard-icon-btn" type="button" aria-label="Help">
+        <span class="material-symbols-outlined filled-icon">help</span>
       </button>
-      <a class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-xl font-medium text-sm transition-transform active:scale-95 shadow-lg shadow-primary/10 inline-flex items-center" href="{% url 'apply_loan' %}">
-        Quick Apply
-      </a>
+      <a class="dashboard-quick-apply" href="{% url 'apply_loan' %}">Quick Apply</a>
     </div>
   </header>
 
-  <div class="flex min-h-screen">
-    <aside class="fixed left-0 top-0 h-full flex flex-col py-6 px-4 bg-[#f1f4f3] dark:bg-slate-950 w-64 border-r border-[#bec9c8]/15 z-40 pt-20">
-      <div class="mb-8 px-4">
-        <h2 class="text-lg font-black text-[#005050] font-headline">Architectural Ledger</h2>
-        <p class="text-xs text-on-secondary-fixed-variant opacity-70">Premium Finance Portal</p>
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar">
+      <div class="dashboard-sidebar-head">
+        <h2>Architectural Ledger</h2>
+        <p>Premium Finance Portal</p>
       </div>
 
-      <nav class="flex-1 space-y-1 overflow-y-auto">
-        <a class="flex items-center gap-3 px-4 py-3 text-[#005050] dark:text-teal-400 font-semibold border-l-4 border-[#005050] bg-white/50 dark:bg-slate-900/50 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
-          <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+      <nav class="dashboard-nav">
+        <a class="dashboard-nav-item active" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">dashboard</span>
           <span>Dashboard Overview</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'apply_loan' %}">
-          <span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+        <a class="dashboard-nav-item" href="{% url 'apply_loan' %}">
+          <span class="material-symbols-outlined">add_box</span>
           <span>Apply Loan</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'my_loans' %}">
-          <span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+        <a class="dashboard-nav-item" href="{% url 'my_loans' %}">
+          <span class="material-symbols-outlined">account_balance_wallet</span>
           <span>My Loans</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
-          <span class="material-symbols-outlined" data-icon="payments">payments</span>
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">payments</span>
           <span>Payments</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
-          <span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">calculate</span>
           <span>Loan Calculator</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
-          <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">notifications</span>
           <span>Notifications</span>
         </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
-          <span class="material-symbols-outlined" data-icon="description">description</span>
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">description</span>
           <span>Documents</span>
         </a>
-
-        <div class="pt-6 mt-6 border-t border-outline-variant/15">
-          <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
-            <span class="material-symbols-outlined" data-icon="person">person</span>
-            <span>Profile</span>
-          </a>
-          <a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-[#005050] hover:translate-x-1 font-headline text-sm tracking-wide transition-transform duration-200 ease-out" href="{% url 'dashboard' %}">
-            <span class="material-symbols-outlined" data-icon="settings">settings</span>
-            <span>Settings</span>
-          </a>
-        </div>
       </nav>
 
-      <div class="mt-auto p-4">
-        <a class="block w-full py-3 bg-secondary-container text-secondary font-bold rounded-xl text-xs uppercase tracking-widest hover:brightness-95 transition-all text-center" href="{% url 'apply_loan' %}">
-          New Application
+      <div class="dashboard-nav dashboard-nav-secondary">
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">person</span>
+          <span>Profile</span>
+        </a>
+        <a class="dashboard-nav-item" href="{% url 'dashboard' %}">
+          <span class="material-symbols-outlined">settings</span>
+          <span>Settings</span>
         </a>
       </div>
+
     </aside>
 
-    <main class="flex-1 ml-64 p-8 bg-surface">
-      <div class="flex justify-between items-end mb-12">
+    <main class="dashboard-main">
+      <section class="dashboard-welcome">
         <div>
-          <span class="text-secondary font-semibold tracking-wider text-xs uppercase">Welcome Back</span>
-          <h1 class="text-4xl font-extrabold text-primary font-headline mt-1">Alex Sterling</h1>
+          <p class="dashboard-eyebrow">Welcome Back</p>
+          <h1>Alex Sterling</h1>
         </div>
-        <div class="text-right">
-          <p class="text-outline text-sm font-medium">Account Status</p>
-          <span class="text-primary font-bold flex items-center gap-1">
-            <span class="material-symbols-outlined text-sm filled-icon">verified</span>
-            Verified Premium
-          </span>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-        <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-primary">
-          <p class="text-outline text-xs font-bold uppercase tracking-widest mb-2">Total Active Balance</p>
-          <h3 class="text-4xl font-headline font-extrabold text-primary">$12,450.00</h3>
-        </div>
-        <div class="bg-surface-container-low p-8 rounded-xl">
-          <p class="text-outline text-xs font-bold uppercase tracking-widest mb-2">Next Payment</p>
-          <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-secondary">calendar_today</span>
-            <h3 class="text-2xl font-headline font-bold text-on-surface">Oct 24, 2023</h3>
+        <div class="dashboard-status">
+          <p>Account Status</p>
+          <div>
+            <span class="material-symbols-outlined filled-icon">verified</span>
+            <span>Verified Premium</span>
           </div>
         </div>
-        <div class="bg-surface-container-low p-8 rounded-xl">
-          <p class="text-outline text-xs font-bold uppercase tracking-widest mb-2">Due Amount</p>
-          <h3 class="text-2xl font-headline font-bold text-error">$425.50</h3>
-          <p class="text-xs text-on-surface-variant mt-1">Scheduled for automatic debit</p>
-        </div>
-      </div>
+      </section>
 
-      <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
-        <div class="xl:col-span-8 space-y-8">
-          <section class="bg-surface-container-low p-8 rounded-xl relative overflow-hidden">
-            <div class="relative z-10">
-              <div class="flex justify-between items-center mb-8">
-                <h4 class="text-lg font-bold font-headline text-primary">Education Loan Progress</h4>
-                <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">65% Paid</span>
-              </div>
-              <div class="flex items-center gap-4 mb-4">
-                <div class="flex-1 h-2 bg-outline-variant/20 rounded-full overflow-hidden">
-                  <div class="h-full bg-primary w-[65%] rounded-full"></div>
-                </div>
-              </div>
-              <div class="flex justify-between items-start">
-                <div class="flex gap-12">
-                  <div class="flex flex-col">
-                    <span class="text-outline text-[10px] font-bold uppercase tracking-tighter">Paid to Date</span>
-                    <span class="text-lg font-bold font-headline">$23,075.00</span>
-                  </div>
-                  <div class="flex flex-col">
-                    <span class="text-outline text-[10px] font-bold uppercase tracking-tighter">Remaining</span>
-                    <span class="text-lg font-bold font-headline">$12,450.00</span>
-                  </div>
-                </div>
-                <p class="text-secondary text-sm font-medium italic">"You are 4 months ahead of schedule. Great work!"</p>
-              </div>
-            </div>
-            <div class="absolute -right-12 -bottom-12 opacity-5">
-              <span class="material-symbols-outlined text-[180px]">school</span>
-            </div>
-          </section>
+      <section class="dashboard-metrics">
+        <article class="dashboard-metric dashboard-metric-primary">
+          <p>Total Active Balance</p>
+          <h3>$12,450.00</h3>
+        </article>
+        <article class="dashboard-metric">
+          <p>Next Payment</p>
+          <div class="dashboard-metric-row">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <h3 class="dark-text">Oct 24, 2023</h3>
+          </div>
+        </article>
+        <article class="dashboard-metric">
+          <p>Due Amount</p>
+          <h3 class="danger-text">$425.50</h3>
+          <span class="dashboard-note">Scheduled for automatic debit</span>
+        </article>
+      </section>
 
-          <section>
-            <div class="flex justify-between items-center mb-6">
-              <h4 class="text-xl font-bold font-headline text-primary">Recent Activity</h4>
-              <button class="text-primary text-sm font-semibold underline underline-offset-4 decoration-surface-tint/30" type="button">View All Transactions</button>
+      <section class="dashboard-grid">
+        <div class="dashboard-left-col">
+          <article class="dashboard-progress-card">
+            <div class="dashboard-progress-head">
+              <h4>Education Loan Progress</h4>
+              <span>65% Paid</span>
             </div>
-            <div class="space-y-4">
-              <div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-surface-container-low transition-colors duration-200">
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
-                    <span class="material-symbols-outlined">payments</span>
-                  </div>
-                  <div>
-                    <p class="font-bold text-on-surface">Monthly Installment</p>
-                    <p class="text-xs text-outline">Ref: EDU-2023-442 &bull; Sept 24, 2023</p>
-                  </div>
-                </div>
-                <div class="text-right">
-                  <p class="font-bold text-error">-$425.50</p>
-                  <p class="text-[10px] font-bold uppercase text-outline">Processed</p>
-                </div>
-              </div>
-
-              <div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-surface-container-low transition-colors duration-200">
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">account_balance</span>
-                  </div>
-                  <div>
-                    <p class="font-bold text-on-surface">Loan Disbursement</p>
-                    <p class="text-xs text-outline">Incremental Release &bull; Aug 12, 2023</p>
-                  </div>
-                </div>
-                <div class="text-right">
-                  <p class="font-bold text-primary">+$5,000.00</p>
-                  <p class="text-[10px] font-bold uppercase text-outline">Credited</p>
-                </div>
-              </div>
-
-              <div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl hover:bg-surface-container-low transition-colors duration-200">
-                <div class="flex items-center gap-4">
-                  <div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
-                    <span class="material-symbols-outlined">receipt_long</span>
-                  </div>
-                  <div>
-                    <p class="font-bold text-on-surface">Credit Fee</p>
-                    <p class="text-xs text-outline">Service Maintenance &bull; July 01, 2023</p>
-                  </div>
-                </div>
-                <div class="text-right">
-                  <p class="font-bold text-on-surface">-$15.00</p>
-                  <p class="text-[10px] font-bold uppercase text-outline">Processed</p>
-                </div>
-              </div>
+            <div class="dashboard-progress-track">
+              <div class="dashboard-progress-fill"></div>
             </div>
+            <div class="dashboard-progress-meta">
+              <div>
+                <p>Paid to Date</p>
+                <strong>$23,075.00</strong>
+              </div>
+              <div>
+                <p>Remaining</p>
+                <strong>$12,450.00</strong>
+              </div>
+              <em>"You are 4 months ahead of schedule. Great work!"</em>
+            </div>
+            <div class="dashboard-progress-mark"></div>
+          </article>
+
+          <section class="dashboard-activity">
+            <div class="dashboard-section-head">
+              <h4>Recent Activity</h4>
+              <a href="{% url 'my_loans' %}">View All Transactions</a>
+            </div>
+
+            <article class="dashboard-activity-item">
+              <div class="dashboard-activity-main">
+                <div class="dashboard-activity-icon green">
+                  <span class="material-symbols-outlined">payments</span>
+                </div>
+                <div>
+                  <h5>Monthly Installment</h5>
+                  <p>Ref: EDU-2023-442 &bull; Sept 24, 2023</p>
+                </div>
+              </div>
+              <div class="dashboard-activity-amount negative">
+                <strong>-$425.50</strong>
+                <span>Processed</span>
+              </div>
+            </article>
+
+            <article class="dashboard-activity-item">
+              <div class="dashboard-activity-main">
+                <div class="dashboard-activity-icon blue">
+                  <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <div>
+                  <h5>Loan Disbursement</h5>
+                  <p>Incremental Release &bull; Aug 12, 2023</p>
+                </div>
+              </div>
+              <div class="dashboard-activity-amount positive">
+                <strong>+$5,000.00</strong>
+                <span>Credited</span>
+              </div>
+            </article>
+
+            <article class="dashboard-activity-item">
+              <div class="dashboard-activity-main">
+                <div class="dashboard-activity-icon gray">
+                  <span class="material-symbols-outlined">receipt_long</span>
+                </div>
+                <div>
+                  <h5>Credit Fee</h5>
+                  <p>Service Maintenance &bull; July 01, 2023</p>
+                </div>
+              </div>
+              <div class="dashboard-activity-amount neutral">
+                <strong>-$15.00</strong>
+                <span>Processed</span>
+              </div>
+            </article>
           </section>
         </div>
 
-        <div class="xl:col-span-4 space-y-6">
-          <div class="bg-tertiary text-on-tertiary-container p-8 rounded-xl relative group cursor-pointer hover:bg-tertiary-container transition-colors shadow-xl shadow-tertiary/10">
-            <span class="material-symbols-outlined text-4xl mb-4 block" data-icon="calculate">calculate</span>
-            <h4 class="text-2xl font-bold font-headline mb-2">Loan Calculator</h4>
-            <p class="text-sm opacity-80 mb-6">Estimate your future repayments with our architectural precision tool.</p>
-            <div class="flex items-center gap-2 font-bold text-sm">
-              Try Now <span class="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_right_alt</span>
-            </div>
-          </div>
+        <div class="dashboard-right-col">
+          <article class="dashboard-calculator-card">
+            <span class="material-symbols-outlined">calculate</span>
+            <h4>Loan Calculator</h4>
+            <p>Estimate your future repayments with our architectural precision tool.</p>
+            <a href="{% url 'apply_loan' %}">Try Now <span class="material-symbols-outlined">arrow_right_alt</span></a>
+          </article>
 
-          <div class="bg-surface-container-low p-6 rounded-xl">
-            <div class="flex items-center gap-2 mb-6">
-              <span class="material-symbols-outlined text-error filled-icon">error</span>
-              <h4 class="font-bold font-headline text-on-surface">Active Alerts</h4>
+          <section class="dashboard-alerts-card">
+            <div class="dashboard-alerts-head">
+              <span class="material-symbols-outlined filled-icon">error</span>
+              <h4>Active Alerts</h4>
             </div>
-            <div class="space-y-4">
-              <div class="p-4 bg-surface-container-lowest rounded-lg border-l-2 border-error">
-                <p class="text-xs font-bold text-error uppercase mb-1">Upcoming Expiry</p>
-                <p class="text-sm text-on-surface">Document 'Insurance_2023.pdf' expires in 14 days.</p>
-              </div>
-              <div class="p-4 bg-surface-container-lowest rounded-lg border-l-2 border-primary">
-                <p class="text-xs font-bold text-primary uppercase mb-1">New Offer</p>
-                <p class="text-sm text-on-surface">You are eligible for a 1% rate reduction on refinance.</p>
-              </div>
-            </div>
-          </div>
 
-          <div class="rounded-xl overflow-hidden h-64 relative">
-            <img alt="Modern corporate building interior" class="w-full h-full object-cover" data-alt="abstract architectural shot of modern office building interior with clean lines, soft natural lighting, and teal accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_uIV-AMAeTnULi6Wcp_3n1g9hRbYDnZ9yqiqNHnLCGeTw_qltFEsAK2Yj6sGHzE5nXcAzLNdT-wuIOxMUYEvYXYyZ3xXcOvOWfbI8zJRMirzmr0vRmmU4nlrx46GzY1Mp0t1RlCs_oD5E5Pah_8ZzU75mz5ht3Ip8zfdhK1Ns2_n2tz4MSe6UuLrkUEGB8ri84_wt6V3vK_evqom2bNkioDbmDQC29WyClkEjsfUPA_usrzS6cjSLRhWGAWnGlKI2i-OdkbU1bPc">
-            <div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent p-6 flex flex-col justify-end">
-              <h5 class="text-white font-bold font-headline text-lg">Financial Guidance</h5>
-              <p class="text-white/80 text-xs">Book a free session with an advisor today.</p>
+            <article class="dashboard-alert danger">
+              <p>Upcoming Expiry</p>
+              <span>Document 'Insurance_2023.pdf' expires in 14 days.</span>
+            </article>
+
+            <article class="dashboard-alert info">
+              <p>New Offer</p>
+              <span>You are eligible for a 1% rate reduction on refinance.</span>
+            </article>
+          </section>
+
+          <a class="dashboard-floating-cta" href="{% url 'apply_loan' %}">
+            <span class="material-symbols-outlined">add</span>
+            <span>New Application</span>
+          </a>
+
+          <article class="dashboard-guidance-card">
+            <img alt="Modern corporate building interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_uIV-AMAeTnULi6Wcp_3n1g9hRbYDnZ9yqiqNHnLCGeTw_qltFEsAK2Yj6sGHzE5nXcAzLNdT-wuIOxMUYEvYXYyZ3xXcOvOWfbI8zJRMirzmr0vRmmU4nlrx46GzY1Mp0t1RlCs_oD5E5Pah_8ZzU75mz5ht3Ip8zfdhK1Ns2_n2tz4MSe6UuLrkUEGB8ri84_wt6V3vK_evqom2bNkioDbmDQC29WyClkEjsfUPA_usrzS6cjSLRhWGAWnGlKI2i-OdkbU1bPc">
+            <div>
+              <h5>Financial Guidance</h5>
+              <p>Book a free session with an advisor today.</p>
             </div>
-          </div>
+          </article>
         </div>
-      </div>
+      </section>
     </main>
-  </div>
-
-  <div class="fixed bottom-8 right-8 z-50">
-    <a class="flex items-center gap-3 bg-white/80 backdrop-blur-xl border border-outline-variant/15 px-6 py-4 rounded-full shadow-2xl hover:bg-surface-container-lowest transition-all group active:scale-95" href="{% url 'apply_loan' %}">
-      <span class="material-symbols-outlined text-primary bg-primary-container/20 p-2 rounded-full" data-icon="add">add</span>
-      <span class="text-primary font-bold text-sm tracking-wide">New Application</span>
-    </a>
   </div>
 </body>
 </html>
