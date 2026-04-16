@@ -73,4 +73,42 @@ document.addEventListener("DOMContentLoaded", () => {
       icon.textContent = icon.dataset.icon;
     }
   });
+
+  const panelLinks = document.querySelectorAll("[data-dashboard-panel-link]");
+  const panels = document.querySelectorAll("[data-dashboard-panel]");
+
+  if (panelLinks.length && panels.length) {
+    const activatePanel = (panelName, shouldBlink = false) => {
+      const targetPanel = document.querySelector(`[data-dashboard-panel="${panelName}"]`);
+
+      if (!targetPanel) {
+        return;
+      }
+
+      panels.forEach((panel) => {
+        panel.classList.toggle("dashboard-panel-hidden", panel.dataset.dashboardPanel !== panelName);
+      });
+
+      panelLinks.forEach((link) => {
+        link.classList.toggle("active", link.dataset.dashboardPanelLink === panelName);
+      });
+
+      if (shouldBlink) {
+        targetPanel.classList.remove("dashboard-panel-blink");
+        void targetPanel.offsetWidth;
+        targetPanel.classList.add("dashboard-panel-blink");
+      }
+    };
+
+    panelLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        activatePanel(link.dataset.dashboardPanelLink, true);
+      });
+    });
+
+    const openedFromHash = window.location.hash === "#my-loans";
+    const initialPanel = openedFromHash ? "my-loans" : "overview";
+    activatePanel(initialPanel, openedFromHash);
+  }
 });

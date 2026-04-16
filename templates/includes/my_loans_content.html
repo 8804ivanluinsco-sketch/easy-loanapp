@@ -1,0 +1,72 @@
+<div class="dashboard-loans-panel">
+  <div class="dashboard-loans-header">
+    <div>
+      <p class="dashboard-eyebrow">Loan Center</p>
+      <h2>My Loans</h2>
+    </div>
+    <a href="{% url 'apply_loan' %}" class="dashboard-quick-apply">
+      Apply Loan
+    </a>
+  </div>
+
+  <div class="dashboard-loan-summary">
+    <article class="dashboard-loan-summary-card">
+      <p>Total Loans</p>
+      <h3>{{ total_loans }}</h3>
+    </article>
+    <article class="dashboard-loan-summary-card">
+      <p>Total Balance</p>
+      <h3>PHP {{ total_balance }}</h3>
+    </article>
+    <article class="dashboard-loan-summary-card">
+      <p>Active Loans</p>
+      <h3>{{ active_loans }}</h3>
+    </article>
+  </div>
+
+  <div class="dashboard-loan-list">
+    {% for loan in loans %}
+    <article class="dashboard-loan-card">
+      <div class="dashboard-loan-card-top">
+        <div>
+          <p class="dashboard-loan-type">{{ loan.loan_type }}</p>
+          <h3>PHP {{ loan.remaining_balance }} Remaining</h3>
+        </div>
+
+        <span class="dashboard-loan-status
+          {% if loan.status == 'active' %} is-active
+          {% elif loan.status == 'pending' %} is-pending
+          {% elif loan.status == 'rejected' %} is-rejected
+          {% else %} is-neutral
+          {% endif %}
+        ">
+          {{ loan.status|title }}
+        </span>
+      </div>
+
+      <div class="dashboard-loan-progress">
+        <div class="dashboard-loan-progress-label">
+          <span>{{ loan.progress }}% Paid</span>
+        </div>
+        <div class="dashboard-loan-progress-track">
+          <div class="dashboard-loan-progress-fill" style="width: {{ loan.progress }}%"></div>
+        </div>
+      </div>
+
+      <p class="dashboard-loan-date">Next Payment: {{ loan.next_payment_date }}</p>
+
+      <div class="dashboard-loan-actions">
+        <a href="{% url 'loan_detail' loan.id %}">View Details</a>
+        {% if loan.status == 'active' %}
+        <button type="button">Pay Now</button>
+        {% endif %}
+      </div>
+    </article>
+    {% empty %}
+    <div class="dashboard-empty-state">
+      <h3>No loans found.</h3>
+      <p>Your active and pending loans will appear here.</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>

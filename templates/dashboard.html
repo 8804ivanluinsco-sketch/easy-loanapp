@@ -42,7 +42,7 @@
       </div>
 
       <nav class="dashboard-nav">
-        <a class="dashboard-nav-item active" href="{% url 'dashboard' %}">
+        <a class="dashboard-nav-item active" href="#overview" data-dashboard-panel-link="overview">
           <span class="material-symbols-outlined">dashboard</span>
           <span>Dashboard Overview</span>
         </a>
@@ -50,7 +50,7 @@
           <span class="material-symbols-outlined">add_box</span>
           <span>Apply Loan</span>
         </a>
-        <a class="dashboard-nav-item" href="{% url 'my_loans' %}">
+        <a class="dashboard-nav-item" href="#my-loans" data-dashboard-panel-link="my-loans">
           <span class="material-symbols-outlined">account_balance_wallet</span>
           <span>My Loans</span>
         </a>
@@ -82,161 +82,166 @@
           <span>Settings</span>
         </a>
       </div>
-
     </aside>
 
     <main class="dashboard-main">
-      <section class="dashboard-welcome">
-        <div>
-          <p class="dashboard-eyebrow">Welcome Back</p>
-          <h1>Alex Sterling</h1>
-        </div>
-        <div class="dashboard-status">
-          <p>Account Status</p>
+      <section class="dashboard-panel" data-dashboard-panel="overview">
+        <section class="dashboard-welcome">
           <div>
-            <span class="material-symbols-outlined filled-icon">verified</span>
-            <span>Verified Premium</span>
+            <p class="dashboard-eyebrow">Welcome Back</p>
+            <h1>Alex Sterling</h1>
           </div>
-        </div>
-      </section>
-
-      <section class="dashboard-metrics">
-        <article class="dashboard-metric dashboard-metric-primary">
-          <p>Total Active Balance</p>
-          <h3>$12,450.00</h3>
-        </article>
-        <article class="dashboard-metric">
-          <p>Next Payment</p>
-          <div class="dashboard-metric-row">
-            <span class="material-symbols-outlined">calendar_today</span>
-            <h3 class="dark-text">Oct 24, 2023</h3>
-          </div>
-        </article>
-        <article class="dashboard-metric">
-          <p>Due Amount</p>
-          <h3 class="danger-text">$425.50</h3>
-          <span class="dashboard-note">Scheduled for automatic debit</span>
-        </article>
-      </section>
-
-      <section class="dashboard-grid">
-        <div class="dashboard-left-col">
-          <article class="dashboard-progress-card">
-            <div class="dashboard-progress-head">
-              <h4>Education Loan Progress</h4>
-              <span>65% Paid</span>
-            </div>
-            <div class="dashboard-progress-track">
-              <div class="dashboard-progress-fill"></div>
-            </div>
-            <div class="dashboard-progress-meta">
-              <div>
-                <p>Paid to Date</p>
-                <strong>$23,075.00</strong>
-              </div>
-              <div>
-                <p>Remaining</p>
-                <strong>$12,450.00</strong>
-              </div>
-              <em>"You are 4 months ahead of schedule. Great work!"</em>
-            </div>
-            <div class="dashboard-progress-mark"></div>
-          </article>
-
-          <section class="dashboard-activity">
-            <div class="dashboard-section-head">
-              <h4>Recent Activity</h4>
-              <a href="{% url 'my_loans' %}">View All Transactions</a>
-            </div>
-
-            <article class="dashboard-activity-item">
-              <div class="dashboard-activity-main">
-                <div class="dashboard-activity-icon green">
-                  <span class="material-symbols-outlined">payments</span>
-                </div>
-                <div>
-                  <h5>Monthly Installment</h5>
-                  <p>Ref: EDU-2023-442 &bull; Sept 24, 2023</p>
-                </div>
-              </div>
-              <div class="dashboard-activity-amount negative">
-                <strong>-$425.50</strong>
-                <span>Processed</span>
-              </div>
-            </article>
-
-            <article class="dashboard-activity-item">
-              <div class="dashboard-activity-main">
-                <div class="dashboard-activity-icon blue">
-                  <span class="material-symbols-outlined">account_balance</span>
-                </div>
-                <div>
-                  <h5>Loan Disbursement</h5>
-                  <p>Incremental Release &bull; Aug 12, 2023</p>
-                </div>
-              </div>
-              <div class="dashboard-activity-amount positive">
-                <strong>+$5,000.00</strong>
-                <span>Credited</span>
-              </div>
-            </article>
-
-            <article class="dashboard-activity-item">
-              <div class="dashboard-activity-main">
-                <div class="dashboard-activity-icon gray">
-                  <span class="material-symbols-outlined">receipt_long</span>
-                </div>
-                <div>
-                  <h5>Credit Fee</h5>
-                  <p>Service Maintenance &bull; July 01, 2023</p>
-                </div>
-              </div>
-              <div class="dashboard-activity-amount neutral">
-                <strong>-$15.00</strong>
-                <span>Processed</span>
-              </div>
-            </article>
-          </section>
-        </div>
-
-        <div class="dashboard-right-col">
-          <article class="dashboard-calculator-card">
-            <span class="material-symbols-outlined">calculate</span>
-            <h4>Loan Calculator</h4>
-            <p>Estimate your future repayments with our architectural precision tool.</p>
-            <a href="{% url 'apply_loan' %}">Try Now <span class="material-symbols-outlined">arrow_right_alt</span></a>
-          </article>
-
-          <section class="dashboard-alerts-card">
-            <div class="dashboard-alerts-head">
-              <span class="material-symbols-outlined filled-icon">error</span>
-              <h4>Active Alerts</h4>
-            </div>
-
-            <article class="dashboard-alert danger">
-              <p>Upcoming Expiry</p>
-              <span>Document 'Insurance_2023.pdf' expires in 14 days.</span>
-            </article>
-
-            <article class="dashboard-alert info">
-              <p>New Offer</p>
-              <span>You are eligible for a 1% rate reduction on refinance.</span>
-            </article>
-          </section>
-
-          <a class="dashboard-floating-cta" href="{% url 'apply_loan' %}">
-            <span class="material-symbols-outlined">add</span>
-            <span>New Application</span>
-          </a>
-
-          <article class="dashboard-guidance-card">
-            <img alt="Modern corporate building interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_uIV-AMAeTnULi6Wcp_3n1g9hRbYDnZ9yqiqNHnLCGeTw_qltFEsAK2Yj6sGHzE5nXcAzLNdT-wuIOxMUYEvYXYyZ3xXcOvOWfbI8zJRMirzmr0vRmmU4nlrx46GzY1Mp0t1RlCs_oD5E5Pah_8ZzU75mz5ht3Ip8zfdhK1Ns2_n2tz4MSe6UuLrkUEGB8ri84_wt6V3vK_evqom2bNkioDbmDQC29WyClkEjsfUPA_usrzS6cjSLRhWGAWnGlKI2i-OdkbU1bPc">
+          <div class="dashboard-status">
+            <p>Account Status</p>
             <div>
-              <h5>Financial Guidance</h5>
-              <p>Book a free session with an advisor today.</p>
+              <span class="material-symbols-outlined filled-icon">verified</span>
+              <span>Verified Premium</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="dashboard-metrics">
+          <article class="dashboard-metric dashboard-metric-primary">
+            <p>Total Active Balance</p>
+            <h3>$12,450.00</h3>
+          </article>
+          <article class="dashboard-metric">
+            <p>Next Payment</p>
+            <div class="dashboard-metric-row">
+              <span class="material-symbols-outlined">calendar_today</span>
+              <h3 class="dark-text">Oct 24, 2023</h3>
             </div>
           </article>
-        </div>
+          <article class="dashboard-metric">
+            <p>Due Amount</p>
+            <h3 class="danger-text">$425.50</h3>
+            <span class="dashboard-note">Scheduled for automatic debit</span>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <div class="dashboard-left-col">
+            <article class="dashboard-progress-card">
+              <div class="dashboard-progress-head">
+                <h4>Education Loan Progress</h4>
+                <span>65% Paid</span>
+              </div>
+              <div class="dashboard-progress-track">
+                <div class="dashboard-progress-fill"></div>
+              </div>
+              <div class="dashboard-progress-meta">
+                <div>
+                  <p>Paid to Date</p>
+                  <strong>$23,075.00</strong>
+                </div>
+                <div>
+                  <p>Remaining</p>
+                  <strong>$12,450.00</strong>
+                </div>
+                <em>"You are 4 months ahead of schedule. Great work!"</em>
+              </div>
+              <div class="dashboard-progress-mark"></div>
+            </article>
+
+            <section class="dashboard-activity">
+              <div class="dashboard-section-head">
+                <h4>Recent Activity</h4>
+                <a href="#my-loans" data-dashboard-panel-link="my-loans">View All Transactions</a>
+              </div>
+
+              <article class="dashboard-activity-item">
+                <div class="dashboard-activity-main">
+                  <div class="dashboard-activity-icon green">
+                    <span class="material-symbols-outlined">payments</span>
+                  </div>
+                  <div>
+                    <h5>Monthly Installment</h5>
+                    <p>Ref: EDU-2023-442 &bull; Sept 24, 2023</p>
+                  </div>
+                </div>
+                <div class="dashboard-activity-amount negative">
+                  <strong>-$425.50</strong>
+                  <span>Processed</span>
+                </div>
+              </article>
+
+              <article class="dashboard-activity-item">
+                <div class="dashboard-activity-main">
+                  <div class="dashboard-activity-icon blue">
+                    <span class="material-symbols-outlined">account_balance</span>
+                  </div>
+                  <div>
+                    <h5>Loan Disbursement</h5>
+                    <p>Incremental Release &bull; Aug 12, 2023</p>
+                  </div>
+                </div>
+                <div class="dashboard-activity-amount positive">
+                  <strong>+$5,000.00</strong>
+                  <span>Credited</span>
+                </div>
+              </article>
+
+              <article class="dashboard-activity-item">
+                <div class="dashboard-activity-main">
+                  <div class="dashboard-activity-icon gray">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                  </div>
+                  <div>
+                    <h5>Credit Fee</h5>
+                    <p>Service Maintenance &bull; July 01, 2023</p>
+                  </div>
+                </div>
+                <div class="dashboard-activity-amount neutral">
+                  <strong>-$15.00</strong>
+                  <span>Processed</span>
+                </div>
+              </article>
+            </section>
+          </div>
+
+          <div class="dashboard-right-col">
+            <article class="dashboard-calculator-card">
+              <span class="material-symbols-outlined">calculate</span>
+              <h4>Loan Calculator</h4>
+              <p>Estimate your future repayments with our architectural precision tool.</p>
+              <a href="{% url 'apply_loan' %}">Try Now <span class="material-symbols-outlined">arrow_right_alt</span></a>
+            </article>
+
+            <section class="dashboard-alerts-card">
+              <div class="dashboard-alerts-head">
+                <span class="material-symbols-outlined filled-icon">error</span>
+                <h4>Active Alerts</h4>
+              </div>
+
+              <article class="dashboard-alert danger">
+                <p>Upcoming Expiry</p>
+                <span>Document 'Insurance_2023.pdf' expires in 14 days.</span>
+              </article>
+
+              <article class="dashboard-alert info">
+                <p>New Offer</p>
+                <span>You are eligible for a 1% rate reduction on refinance.</span>
+              </article>
+            </section>
+
+            <a class="dashboard-floating-cta" href="{% url 'apply_loan' %}">
+              <span class="material-symbols-outlined">add</span>
+              <span>New Application</span>
+            </a>
+
+            <article class="dashboard-guidance-card">
+              <img alt="Modern corporate building interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_uIV-AMAeTnULi6Wcp_3n1g9hRbYDnZ9yqiqNHnLCGeTw_qltFEsAK2Yj6sGHzE5nXcAzLNdT-wuIOxMUYEvYXYyZ3xXcOvOWfbI8zJRMirzmr0vRmmU4nlrx46GzY1Mp0t1RlCs_oD5E5Pah_8ZzU75mz5ht3Ip8zfdhK1Ns2_n2tz4MSe6UuLrkUEGB8ri84_wt6V3vK_evqom2bNkioDbmDQC29WyClkEjsfUPA_usrzS6cjSLRhWGAWnGlKI2i-OdkbU1bPc">
+              <div>
+                <h5>Financial Guidance</h5>
+                <p>Book a free session with an advisor today.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="dashboard-panel dashboard-panel-hidden" data-dashboard-panel="my-loans">
+        {% include "includes/my_loans_content.html" %}
       </section>
     </main>
   </div>

@@ -182,6 +182,42 @@ h6,
   padding: 28px 28px 36px;
 }
 
+.dashboard-panel-hidden {
+  display: none;
+}
+
+.dashboard-panel-blink {
+  animation: dashboardPanelBlink 1s ease;
+}
+
+@keyframes dashboardPanelBlink {
+  0% {
+    opacity: 0.7;
+    transform: translateY(10px);
+    filter: saturate(0.88);
+  }
+
+  45% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: saturate(1.08);
+    box-shadow: 0 0 0 12px rgba(8, 103, 107, 0.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: saturate(1);
+    box-shadow: 0 0 0 0 rgba(8, 103, 107, 0);
+  }
+}
+
+.dashboard-standalone-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
 .dashboard-welcome {
   display: flex;
   align-items: flex-start;
@@ -678,6 +714,202 @@ h6,
   font-size: 12px;
 }
 
+.dashboard-loans-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.dashboard-loans-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.dashboard-loans-header h2 {
+  margin: 0;
+  color: #04595d;
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.dashboard-loan-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.dashboard-loan-summary-card,
+.dashboard-loan-card,
+.dashboard-empty-state {
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(7, 77, 79, 0.05);
+}
+
+.dashboard-loan-summary-card {
+  padding: 22px 24px;
+}
+
+.dashboard-loan-summary-card p {
+  margin: 0 0 12px;
+  color: #6c7a79;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.dashboard-loan-summary-card h3 {
+  margin: 0;
+  color: #04595d;
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.dashboard-loan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dashboard-loan-card {
+  padding: 24px;
+  border-left: 4px solid #08676b;
+}
+
+.dashboard-loan-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.dashboard-loan-card-top h3 {
+  margin: 6px 0 0;
+  color: #111917;
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.dashboard-loan-type {
+  margin: 0;
+  color: #6c7a79;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.dashboard-loan-status {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.dashboard-loan-status.is-active {
+  background: #d6edd9;
+  color: #406847;
+}
+
+.dashboard-loan-status.is-pending {
+  background: #f7efc9;
+  color: #8a6b11;
+}
+
+.dashboard-loan-status.is-rejected {
+  background: #f9d9d9;
+  color: #a12323;
+}
+
+.dashboard-loan-status.is-neutral {
+  background: #e2e4e2;
+  color: #56605f;
+}
+
+.dashboard-loan-progress {
+  margin-top: 18px;
+}
+
+.dashboard-loan-progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: #49635b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.dashboard-loan-progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: #dbe3e0;
+  overflow: hidden;
+}
+
+.dashboard-loan-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #0b6b6c;
+}
+
+.dashboard-loan-date {
+  margin: 14px 0 0;
+  color: #6a7675;
+  font-size: 13px;
+}
+
+.dashboard-loan-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.dashboard-loan-actions a {
+  color: #0a5f62;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.dashboard-loan-actions button {
+  border: 0;
+  border-radius: 10px;
+  background: #1f8f53;
+  color: #ffffff;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dashboard-empty-state {
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.dashboard-empty-state h3 {
+  margin: 0 0 8px;
+  color: #04595d;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.dashboard-empty-state p {
+  margin: 0;
+  color: #6a7675;
+  font-size: 14px;
+}
+
 .application-page {
   max-width: 1080px;
 }
@@ -947,7 +1179,8 @@ h6,
 
 @media (max-width: 1200px) {
   .dashboard-metrics,
-  .dashboard-grid {
+  .dashboard-grid,
+  .dashboard-loan-summary {
     grid-template-columns: 1fr;
   }
 
@@ -988,7 +1221,8 @@ h6,
 
   .dashboard-brand-row,
   .dashboard-top-actions,
-  .dashboard-welcome {
+  .dashboard-welcome,
+  .dashboard-loans-header {
     flex-direction: column;
     align-items: flex-start;
   }

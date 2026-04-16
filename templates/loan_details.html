@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+  <div class="mx-auto max-w-xl rounded-xl bg-white p-6 shadow">
+    <h1 class="mb-4 text-2xl font-bold">Loan Details</h1>
+
+    <p><strong>Type:</strong> {{ loan.loan_type }}</p>
+    <p><strong>Total Amount:</strong> PHP {{ loan.amount }}</p>
+    <p><strong>Remaining:</strong> PHP {{ loan.remaining_balance }}</p>
+    <p><strong>Interest:</strong> {{ loan.interest_rate }}%</p>
+    <p><strong>Term:</strong> {{ loan.term_months }} months</p>
+    <p><strong>Status:</strong> {{ loan.status }}</p>
+    <p><strong>Next Payment:</strong> {{ loan.next_payment_date }}</p>
+
+    <a href="{% url 'my_loans' %}" class="mt-4 inline-block text-blue-600">
+      Back
+    </a>
+  </div>
+</body>
+</html>
